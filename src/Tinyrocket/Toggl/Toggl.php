@@ -3,6 +3,7 @@
 use Tinyrocket\Toggl\Adapter\BuzzAdapter;
 use Tinyrocket\Toggl\Resource\TimeEntries;
 use Tinyrocket\Toggl\Resource\Workspaces;
+use Tinyrocket\Toggl\Resource\Clients;
 
 class Toggl {
 
@@ -26,6 +27,11 @@ class Toggl {
 	public function workspaces()
 	{
 		return new Workspaces($this->adapter);
+	}
+
+	public function clients()
+	{
+		return new Clients($this->adapter);
 	}
 
 }
