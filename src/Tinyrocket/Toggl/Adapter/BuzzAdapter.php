@@ -62,7 +62,6 @@ class BuzzAdapter extends BasicAuthListener implements AdapterInterface {
         $response = $this->browser->get($url);
 
         if (!$response->isSuccessful()) {
-            return $url;
             throw new \Exception($response);
         }
 
