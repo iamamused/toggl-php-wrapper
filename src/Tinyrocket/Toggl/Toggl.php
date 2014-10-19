@@ -6,6 +6,7 @@ use Tinyrocket\Toggl\Resource\Workspaces;
 use Tinyrocket\Toggl\Resource\Projects;
 use Tinyrocket\Toggl\Resource\Reports;
 use Tinyrocket\Toggl\Resource\Tags;
+use Tinyrocket\Toggl\Resource\Tasks;
 
 
 class Toggl {
@@ -50,6 +51,11 @@ class Toggl {
 	public function reports($workspace)
 	{
 		return new Reports($this->adapter, $workspace);
+	}
+
+	public function tasks()
+	{
+		return new Tasks($this->adapter);
 	}
 
 }
