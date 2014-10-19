@@ -59,10 +59,45 @@ Clients provides the ability to get, update and delete clients for a give a give
 	$toggl->clients()->getClientProjects($clientId, $status)
 
 ### Dashboard
+The Dashboard provides an overview of user and project activity for a given workspace. [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/chapters/dashboard.md)
 
-### Project Users
+	$toggl->workspaces()->getDashboard($workspaceId)
 
 ### Projects
+Projects provides the ability to get, create update and delete client projects [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md)
+
+**Get all projects visible to a user**
+
+	$toggl->projects()->getProjects()
+
+**Get a single project by ID**
+
+	$toggl->projects()->getProject($projectId)
+
+**Get a project by name**
+
+	$toggl->projects()->getProjectByName($name)
+	
+**Update a project**
+
+	$toggl->projects()->updateProject($projectId, $name, $additionalParams)
+	
+**Delete a project**
+
+	$toggl->projects()->deleteProject($projectId)
+	
+**Get project users **
+
+	$toggl->projects()->getProjectUsers($projectId)
+	
+**Get a project's tasks**
+
+	$toggl->projects()->getProjectTasks($projectId)
+
+**Delete multiple projects**
+
+	$toggl->projects()->massDeleteProjects(array $projects)
+	
 
 ### Tags
 
