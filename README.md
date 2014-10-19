@@ -4,6 +4,7 @@ Toggl API PHP Wrapper
 [![Build Status](https://travis-ci.org/TinyRocket/toggl-php-wrapper.svg)](https://travis-ci.org/TinyRocket/toggl-php-wrapper) [![Latest Stable Version](https://poser.pugx.org/tinyrocket/toggl/v/stable.svg)](https://packagist.org/packages/tinyrocket/toggl) [![Latest Unstable Version](https://poser.pugx.org/tinyrocket/toggl/v/unstable.svg)](https://packagist.org/packages/tinyrocket/toggl) [![License](https://poser.pugx.org/tinyrocket/toggl/license.svg)](https://packagist.org/packages/tinyrocket/toggl)
 
 A simple PHP 5.3+ wrapper for the the Toggle (v8) and Toggl Reports (v2) API.
+> **Note:** This package is still in the beta phase of development. Right now, it does not provide backwards compatability for older versions of the Toggl API, though it is planned. 
 
 ## Installation
 
@@ -86,7 +87,7 @@ Projects provides the ability to get, create update and delete client projects [
 
 	$toggl->projects()->deleteProject($projectId)
 	
-**Get project users **
+**Get project users**
 
 	$toggl->projects()->getProjectUsers($projectId)
 	
@@ -100,11 +101,137 @@ Projects provides the ability to get, create update and delete client projects [
 	
 
 ### Tags
+Tags provides the ability to get, create and delete time entry tags [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/chapters/tags.md)
+
+**Get a list of available tags**
+
+	$toggl->tags()->getTags()
+
+**Create a tag for a given workspace**
+
+	$toggl->tags()->createTag($workspaceId, $name)
+
+**Delete a tag**
+
+	$toggl->tags()->deleteTag($tagId)
+
+**Get tags by workspace**
+
+	$toggl->tags()->getWorkspaceTags($workspaceId)
 
 ### Tasks
+Tasks provides the ability to get, add, update and remove tasks for a given project [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/chapters/tasks.md)
 
+**Create a task**
+
+	$toggl->tasks()->createTask($projectId, $name, $additional)
+
+**Get a task by ID**
+
+	$toggl->tasks()->getTask($taskId)
+
+**Update a task**
+
+	$toggl->tasks()->updateTask($taskId, $data, $fields)
+
+**Delete a task**
+
+	$toggl->tasks()->deleteTask($taskId)
+
+**Update multiple tasks**
+
+	$toggl->tasks()->massUpdateTasks($tasks, $data, $fields)
+
+**Delete multiple tasks**
+
+	$toggl->tasks()->massDeleteTasks($tasks)
+	
 ### Time Entries
+Time Entries provides the ability to add, edit and delete time entries. It also allows you to start a new time entry, as well as stop an active entries. [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md)
 
-### Workspace Users
+**Get time entries**
 
+	$toggl->entries()->getTimeEntries()
+
+**Get active time entry**
+
+	$toggl->entries()->getCurrentTimeEntry()
+
+**Get time entry details**
+
+	$toggl->entries()->getTimeEntryDetails($entryId)
+
+**Start a new time entry**
+
+	$toggl->entries()->startTimeEntry($description, $projectId, $billable,  $tags, $addtionalParams)
+
+**Stop a time entry**
+
+	$toggl->entries()->stopTimeEntry($entryId)
+
+**Delete a time entry**
+
+	$toggl->entries()->deleteTimeEntry($entryId)
+
+**Update a time entry**
+
+	$toggl->entries()->updateTimeEntry($entryId, $description, $projectId, $billable,  $tags)
+
+**Get time entries by date range**
+
+	$toggl->entries()->getTimeEntriesByRange($startDate, $endDate)
+
+**Mass update time entry tags**
+
+	$toggl->entries()->massUpdateTimeEntryTags($entries, $tags, $action)
+	
 ### Workspaces
+Workspaces provides the ability to add, edit and delete workspaces available to a user. [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md)
+
+**Get visisible workspaces**
+
+	$toggl->workspaces()->getWorkspaces()
+
+**Get a single workspace by ID**
+
+	$toggl->workspaces()->getWorkspace($workspaceId)
+
+**Update a workspace**
+
+	$toggl->workspaces()->updateWorkspace($workspaceId, $name, $addtional)
+
+**Get workspace Users**
+
+	$toggl->workspaces()->getWorkspaceUsers($workspaceId)
+
+**Get workspace clients**
+
+	$toggl->workspaces()->getWorkspaceClients($workspaceId)
+
+**Get workspace projects**
+
+	$toggl->workspaces()->getWorkspaceProjects($workspaceId)
+
+**Get workspace tasks**
+
+	$toggl->workspaces()->getWorkspaceTasks($workspaceId, $status)
+
+**Get workspace tags**
+
+	$toggl->workspaces()->getWorkspaceTags($workspaceId)
+
+**Invite users to a workspace**
+
+	$toggl->workspaces()->invite($workspaceId, $emails)
+
+**Get a workspace by name**
+
+	$toggl->workspaces()->getWorkspaceByName($name)
+
+**Get user by email**
+
+	$toggl->workspaces()->getUserByEmail($workspaceId, $email)
+
+**Get dashboard stats**
+
+	$toggl->workspaces()->getDashboard($workspaceId)
