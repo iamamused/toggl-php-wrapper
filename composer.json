@@ -13,7 +13,7 @@
         "kriswallsmith/buzz": "dev-master"
     },
     "require-dev": {
-        "filp/whoops": "~1.0",
+        "filp/whoops": "~1.0"
     },
     "autoload": {
         "psr-0": {
