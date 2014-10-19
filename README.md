@@ -16,7 +16,11 @@ A simple PHP 5.3+ wrapper for the the Toggle (v8) and Toggl Reports (v2) API.
 	- [Tasks](#tasks)
 	- [Time Entries](#time-entries)
 	- [Workspaces](#workspaces)
-- Reports API
+- [Reports API](#reports-api)
+	- [Weekly Report](#weekly-report)
+	- [Detailed Report](#detailed-report)
+	- [Summary Report](#summary-report)
+	- [Available Parameters](#available-parameters)
 
 ## Installation
 
@@ -247,3 +251,50 @@ Workspaces provides the ability to add, edit and delete workspaces available to 
 **Get dashboard stats**
 
 	$toggl->workspaces()->getDashboard($workspaceId)
+	
+#Reports API
+The Toggl reports API allows you to pull data for **weekly**, **detailed** and **summary** reports. Right now, no PDF support is provided, but planned for in the next release of this wrapper
+
+**Note:** Unlike other instances of the wrapper, the reports method expects a workspace ID to be passed through on intialization. 
+
+	$reports = $toggl->reports($workspaceId)
+
+### Weekly Report
+The weekly report gives aggregated 7 day durations or earnings grouped by users and projects. [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/reports/weekly.md)
+
+	$reports->getWeeklyReport($params)
+
+### Detailed Report
+The detailed report returns the time entries for the requested parameters/filters. [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/reports/detailed.md)
+
+	$reports->getDetailedReport($params)
+
+### Summary Report
+Summary report returns the aggregated time entries data. [See Docs](https://github.com/toggl/toggl_api_docs/blob/master/reports/summary.md)
+
+	$reports->getSummaryReport($params)
+
+### Available Parameters
+These can be found in the reports [documentation](https://github.com/toggl/toggl_api_docs/blob/master/reports.md)
+
+- user_agent
+- workspace_id
+- since
+- until
+- billable
+- client_ids
+- project_ids
+- user_ids
+- tag_ids
+- task_ids
+- time_entry_ids
+- description
+- without_description
+- order_field
+	- date/description/duration/user in detailed reports
+	- title/duration/amount in summary reports
+	- title/day1/day2/day3/day4/day5/day6/day7/week_total in weekly report
+- order_desc
+- distinct_rates
+- rounding
+- display_hours
