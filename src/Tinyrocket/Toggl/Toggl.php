@@ -4,6 +4,7 @@ use Tinyrocket\Toggl\Adapter\BuzzAdapter;
 use Tinyrocket\Toggl\Resource\TimeEntries;
 use Tinyrocket\Toggl\Resource\Workspaces;
 use Tinyrocket\Toggl\Resource\Projects;
+use Tinyrocket\Toggl\Resource\Tags;
 
 
 class Toggl {
@@ -38,6 +39,11 @@ class Toggl {
 	public function projects()
 	{
 		return new Projects($this->adapter);
+	}
+
+	public function tags()
+	{
+		return new Tags($this->adapter);
 	}
 
 }
