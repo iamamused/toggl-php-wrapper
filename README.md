@@ -6,6 +6,18 @@ Toggl API PHP Wrapper
 A simple PHP 5.3+ wrapper for the the Toggle (v8) and Toggl Reports (v2) API.
 > **Note:** This package is still in the beta phase of development. Right now, it does not provide backwards compatability for older versions of the Toggl API, though it is planned. 
 
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [Toggl API](#clients)
+	- [Clients](#clients)
+	- [Dashboard](#dashboard)
+	- [Projects](#projects)
+	- [Tags](#tags)
+	- [Tasks](#tasks)
+	- [Time Entries](#time-entries)
+	- [Workspaces](#workspaces)
+- Reports API
+
 ## Installation
 
 The easiest way to install the Toggl Wrapper is via [Composer](https://getcomposer.org/download/)
