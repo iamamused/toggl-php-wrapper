@@ -41,6 +41,19 @@ class TimeEntries extends AbstractResource {
 	}
 
 	/**
+	 *	Create Time Entry
+	 *
+	 *	Creates a new time entry based on supplied data array
+	 *
+	 *	@param array $data 		New Time ENtry Data
+	 */
+	public function createTimeEntry(array $data = array() )
+	{
+		$data = json_encode(array('time_entry' => $data));
+		return $this->adapter->post(sprintf('%s/time_entries', $this->endpoint), array(), $data);
+	}
+
+	/**
 	 *	Get Current Time Entry
 	 *
 	 *	Returns current (running) time entry
