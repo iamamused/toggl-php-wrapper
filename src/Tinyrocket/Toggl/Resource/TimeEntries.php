@@ -127,21 +127,12 @@ class TimeEntries extends AbstractResource {
 	 *	Updates a time entry
 	 *
 	 *	@param int 		$entryId 				Time Entry Identifier
-	 *	@param string 	$description 			Time Entry Description
-	 *	@param int    	$pid 					Time Entry Project ID
-	 *	@param bool   	$billable				Whether entry is billable or not
-	 *	@param array  	$tags 					Array of tags for time entry
-	 *	@param array  	$additional 			Addtional parameters to pass to entry
+	 *	@param array 	$data 					Updated fields
 	 *	@return $object
 	 */
-	public function updateTimeEntry($entryId, $description = '', $pid = null, $billable = false,  $tags = array())
+	public function updateTimeEntry($entryId, array $data = array())
 	{
-		$entry = array('time_entry' => array(
-			'description'	=>	$description,
-			'tags'			=>	$tags,
-			'pid'			=>	$pid,
-			'billable'		=>	$billable,
-		));
+		$entry = array('time_entry' => $data);
 
 		$entry = json_encode($entry);
 
