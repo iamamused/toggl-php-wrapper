@@ -57,6 +57,9 @@ class Toggl {
 	 */
 	public function __construct($token)
 	{
+		if ( is_object($token) ) {
+			$token = $token->get('toggl::api_token');
+		}
 		$this->adapter = new BuzzAdapter($token);
 	}
 
