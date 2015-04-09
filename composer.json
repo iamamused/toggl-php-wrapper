@@ -8,9 +8,9 @@
             "email": "michael@tinyrocket.co"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "kriswallsmith/buzz": "dev-master"
+        "kriswallsmith/buzz": "0.10"
     },
     "require-dev": {
         "filp/whoops": "~1.0"
