@@ -94,10 +94,11 @@ class TimeEntries extends AbstractResource {
 	public function startTimeEntry($description = '', $pid = null, $billable = false,  $tags = array(), $addtional = array())
 	{
 		$entry = array('time_entry' => array(
-			'description'	=>	$description,
+			'description'           =>	$description,
 			'tags'			=>	$tags,
 			'pid'			=>	$pid,
 			'billable'		=>	$billable,
+			'created_with'          =>	'Tinyrocket/toggl-php-wrapper',
 		));
 
 		$entry = json_encode($entry);
